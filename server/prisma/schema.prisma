@@ -18,7 +18,6 @@ model User {
   password  String
   name      String?
   role      Role      @default(USER)
-  deletedAt DateTime? // Soft delete
 
   // Relations
   cartItems CartItem[]
@@ -86,16 +85,16 @@ model OrderItem {
 }
 
 model Address {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  street  String
-  city    String
-  state   String
-  zipCode String
-  country String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  street    String
+  city      String
+  state     String
+  zipCode   String
+  country   String
 
   // Foreign key
-  order   Order?  @relation(fields: [orderId], references: [id])
-  orderId String? @db.ObjectId
+  order     Order?   @relation(fields: [orderId], references: [id])
+  orderId   String?  @unique @db.ObjectId 
 }
 
 model Coupon {

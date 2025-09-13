@@ -1,4 +1,4 @@
-const {prisma }= require('../utils/dbConnector');
+const {prisma }= require('../utils/ConnectDB');
 
 export const getUser = async (req, res) => {
   try {

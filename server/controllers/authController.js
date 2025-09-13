@@ -1,4 +1,4 @@
-const {prisma }= require('../utils/dbConnector');
+const {prisma }= require('../utils/ConnectDB');
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
