@@ -1,4 +1,4 @@
-import prisma from '../prismaClient.js';
+const {prisma }= require('../utils/dbConnector');
 
 export const getAllUsers = async (req, res) => {
   try {

@@ -1,4 +1,4 @@
-import prisma from '../prismaClient.js';
+const {prisma }= require('../utils/dbConnector');
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
