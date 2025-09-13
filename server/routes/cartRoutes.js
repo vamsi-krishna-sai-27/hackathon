@@ -10,7 +10,6 @@ import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// User must be logged in
 router.get("/", protect, getCartItems);
 router.post("/", protect, addToCart);
 router.put("/:itemId", protect, updateCartItem);
