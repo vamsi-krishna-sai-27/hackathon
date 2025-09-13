@@ -1,6 +1,6 @@
 const {prisma }= require('../utils/dbConnector');
 
-export const getProducts = async (req, res) => {
+exports.getProducts = async (req, res) => {
   try {
     const { category, search } = req.query;
     const products = await prisma.product.findMany({
@@ -17,7 +17,7 @@ export const getProducts = async (req, res) => {
   }
 };
 
-export const getProduct = async (req, res) => {
+exports.getProduct = async (req, res) => {
   try {
     const product = await prisma.product.findUnique({ where: { id: req.params.id } });
     if (!product) return res.status(404).json({ message: 'Product not found' });
@@ -27,7 +27,7 @@ export const getProduct = async (req, res) => {
   }
 };
 
-export const createProduct = async (req, res) => {
+exports.createProduct = async (req, res) => {
   try {
     const { name, description, price, stock, imageUrl, category } = req.body;
     const product = await prisma.product.create({
@@ -39,7 +39,7 @@ export const createProduct = async (req, res) => {
   }
 };
 
-export const updateProduct = async (req, res) => {
+exports.updateProduct = async (req, res) => {
   try {
     const { name, description, price, stock, imageUrl, category } = req.body;
     const product = await prisma.product.update({
@@ -52,7 +52,7 @@ export const updateProduct = async (req, res) => {
   }
 };
 
-export const deleteProduct = async (req, res) => {
+exports.deleteProduct = async (req, res) => {
   try {
     await prisma.product.delete({ where: { id: req.params.id } });
     res.json({ message: 'Product deleted' });

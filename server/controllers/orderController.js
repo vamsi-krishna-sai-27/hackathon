@@ -1,6 +1,6 @@
 const {prisma }= require('../utils/dbConnector');
 
-export const createOrder = async (req, res) => {
+exports.createOrder = async (req, res) => {
   try {
     const cartItems = await prisma.cartItem.findMany({
       where: { userId: req.user.id },
@@ -33,7 +33,7 @@ export const createOrder = async (req, res) => {
   }
 };
 
-export const getOrders = async (req, res) => {
+exports.getOrders = async (req, res) => {
   try {
     const orders = await prisma.order.findMany({
       where: { userId: req.user.id },
@@ -45,7 +45,7 @@ export const getOrders = async (req, res) => {
   }
 };
 
-export const getOrderById = async (req, res) => {
+exports.getOrderById = async (req, res) => {
   try {
     const order = await prisma.order.findUnique({
       where: { id: req.params.id },
@@ -61,7 +61,7 @@ export const getOrderById = async (req, res) => {
   }
 };
 
-export const cancelOrder = async (req, res) => {
+exports.cancelOrder = async (req, res) => {
   try {
     const order = await prisma.order.findUnique({ where: { id: req.params.id } });
     if (!order) return res.status(404).json({ message: 'Order not found' });

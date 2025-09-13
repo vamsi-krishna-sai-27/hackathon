@@ -1,6 +1,6 @@
 const {prisma }= require('../utils/dbConnector');
 
-export const getUser = async (req, res) => {
+exports.getUser = async (req, res) => {
   try {
     const user = await prisma.user.findUnique({
       where: { id: req.params.id },
@@ -13,7 +13,7 @@ export const getUser = async (req, res) => {
   }
 };
 
-export const updateUser = async (req, res) => {
+exports.updateUser = async (req, res) => {
   try {
     const { name } = req.body;
     const user = await prisma.user.update({

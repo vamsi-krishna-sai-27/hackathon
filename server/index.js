@@ -11,7 +11,7 @@ const {CartRouter}=require('./routes/cartRoutes')
 const {OrderRouter}=require('./routes/orderRoutes')
 const {ProductRoutes}=require('./routes/productRoutes');
 
-const { ConnectDB } = require("./utils/ConnectDB")
+
 
 
 ConnectDB();

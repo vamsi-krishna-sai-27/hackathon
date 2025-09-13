@@ -18,7 +18,6 @@ model User {
   password  String
   name      String?
   role      Role      @default(USER)
-  deletedAt DateTime? // Soft delete
 
   // Relations
   cartItems CartItem[]

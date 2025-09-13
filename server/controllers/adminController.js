@@ -1,6 +1,6 @@
-const {prisma }= require('../utils/dbConnector');
+const {prisma} =require('../utils/ConnectDB');
 
-export const getAllUsers = async (req, res) => {
+exports.getAllUsers = async (req, res) => {
   try {
     const users = await prisma.user.findMany();
     res.json(users);
@@ -9,7 +9,7 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
-export const deleteUser = async (req, res) => {
+exports.deleteUser = async (req, res) => {
   try {
     await prisma.user.delete({ where: { id: req.params.id } });
     res.json({ message: 'User deleted' });
@@ -18,7 +18,7 @@ export const deleteUser = async (req, res) => {
   }
 };
 
-export const getAllOrders = async (req, res) => {
+exports.getAllOrders = async (req, res) => {
   try {
     const orders = await prisma.order.findMany({ include: { orderItems: true, user: true } });
     res.json(orders);
@@ -27,7 +27,7 @@ export const getAllOrders = async (req, res) => {
   }
 };
 
-export const updateOrderStatus = async (req, res) => {
+exports.updateOrderStatus = async (req, res) => {
   try {
     const { status } = req.body;
     const order = await prisma.order.update({
@@ -40,7 +40,7 @@ export const updateOrderStatus = async (req, res) => {
   }
 };
 
-export const getDashboardStats = async (req, res) => {
+exports.getDashboardStats = async (req, res) => {
   try {
     const totalUsers = await prisma.user.count();
     const totalOrders = await prisma.order.count();

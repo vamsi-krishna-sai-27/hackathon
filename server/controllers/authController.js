@@ -10,7 +10,7 @@ const generateToken = (user) => {
   );
 };
 
-export const registerUser = async (req, res) => {
+exports.registerUser = async (req, res) => {
   try {
     const { email, password, name } = req.body;
     const userExists = await prisma.user.findUnique({ where: { email } });
@@ -28,7 +28,7 @@ export const registerUser = async (req, res) => {
   }
 };
 
-export const loginUser = async (req, res) => {
+exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await prisma.user.findUnique({ where: { email } });
@@ -44,7 +44,7 @@ export const loginUser = async (req, res) => {
   }
 };
 
-export const getProfile = async (req, res) => {
+exports.getProfile = async (req, res) => {
   try {
     const user = await prisma.user.findUnique({
       where: { id: req.user.id },

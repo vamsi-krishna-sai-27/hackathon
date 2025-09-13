@@ -1,6 +1,6 @@
 const {prisma }= require('../utils/dbConnector');
 
-export const getCartItems = async (req, res) => {
+exports.getCartItems = async (req, res) => {
   try {
     const cartItems = await prisma.cartItem.findMany({
       where: { userId: req.user.id },
@@ -12,7 +12,7 @@ export const getCartItems = async (req, res) => {
   }
 };
 
-export const addToCart = async (req, res) => {
+exports.addToCart = async (req, res) => {
   try {
     const { productId, quantity } = req.body;
     const cartItem = await prisma.cartItem.create({
@@ -28,7 +28,7 @@ export const addToCart = async (req, res) => {
   }
 };
 
-export const updateCartItem = async (req, res) => {
+exports.updateCartItem = async (req, res) => {
   try {
     const { quantity } = req.body;
     const cartItem = await prisma.cartItem.update({
@@ -41,7 +41,7 @@ export const updateCartItem = async (req, res) => {
   }
 };
 
-export const removeCartItem = async (req, res) => {
+exports.removeCartItem = async (req, res) => {
   try {
     await prisma.cartItem.delete({ where: { id: req.params.itemId } });
     res.json({ message: 'Item removed from cart' });
@@ -50,7 +50,7 @@ export const removeCartItem = async (req, res) => {
   }
 };
 
-export const clearCart = async (req, res) => {
+exports.clearCart = async (req, res) => {
   try {
     await prisma.cartItem.deleteMany({ where: { userId: req.user.id } });
     res.json({ message: 'Cart cleared' });
