@@ -1,4 +1,4 @@
-const {prisma }= require('../utils/dbConnector');
+const {prisma} =require('../utils/ConnectDB');
 
 exports.createOrder = async (req, res) => {
   try {

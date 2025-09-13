@@ -1,12 +1,12 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   getAllUsers,
   deleteUser,
   getAllOrders,
   updateOrderStatus,
   getDashboardStats,
-} from "../controllers/adminController.js";
-import { protect, adminOnly } from "../middleware/authMiddleware.js";
+} = require("../controllers/adminController");
+const { protect, adminOnly } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
@@ -19,4 +19,4 @@ router.put("/orders/:id/status", protect, adminOnly, updateOrderStatus);
 
 router.get("/dashboard", protect, adminOnly, getDashboardStats);
 
-export default router;
+module.exports = router;

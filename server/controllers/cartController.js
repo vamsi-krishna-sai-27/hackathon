@@ -1,4 +1,4 @@
-const {prisma }= require('../utils/dbConnector');
+const {prisma} =require('../utils/ConnectDB');
 
 exports.getCartItems = async (req, res) => {
   try {

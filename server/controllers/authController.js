@@ -1,6 +1,6 @@
-const {prisma }= require('../utils/dbConnector');
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+const { prisma } = require('../utils/ConnectDB');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const generateToken = (user) => {
   return jwt.sign(
